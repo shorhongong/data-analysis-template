@@ -28,10 +28,10 @@ information corresponding to your project:
 ###################################################
 # AUTHORSHIP AND WEBSITE INFO (Replace accordingly)
 ###################################################
-AUTHOR = u'Benoit Dherin'
+AUTHOR = u'Shorhon Gong'
 SITENAME = u'Data Analysis Project'
 SITESUBTITLE = u'Template using the iPython notebook'
-GITHUB_REPOSITORY_URL = u'https://github.com/BenoitDherin/data-analysis-template'
+GITHUB_REPOSITORY_URL = u'https://github.com/shorhongong/data-analysis-template'
 ###################################################
 ```
 
@@ -46,7 +46,7 @@ to find out how to customize this url).
 # URL of the github repository website associated with the fork
 # of this repository  (Replace accordingly)
 ####################################################################
-SITEURL = 'http://benoitdherin.github.io/data-analysis-template'
+SITEURL = 'http://shorhongong.github.io/data-analysis-template'
 ####################################################################
 ```
 
@@ -56,7 +56,7 @@ SITEURL = 'http://benoitdherin.github.io/data-analysis-template'
 ##################################################################################
 # Replace below with the corresponding info for your fork of the github repository 
 ##################################################################################
-GITHUB_REPOSITORY=https://github.com/BenoitDherin/data-analysis-template.git
+GITHUB_REPOSITORY=https://github.com/shorhongong/data-analysis-template.git
 ##################################################################################
 ```
 
