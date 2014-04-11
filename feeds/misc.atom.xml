@@ -280,6 +280,10 @@ In&amp;nbsp;[]:
 
 &lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>Data Gathering</title><link href="http://shorhongong.github.io/data-analysis-template/nb1.html" rel="alternate"></link><updated>2014-03-01T00:00:00-08:00</updated><author><name>Benoit Dherin</name></author><id>tag:shorhongong.github.io,2014-03-01:data-analysis-template/nb1.html</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Just-a-test"&gt;Just a test&lt;a class="anchor-link" href="#Just-a-test"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In this notebook, you'll&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;create the directory structure for your project&lt;/li&gt;
@@ -292,9 +296,10 @@ In&amp;nbsp;[]:
 &lt;h2 id="team-members-responsible-for-this-notebook"&gt;Team members responsible for this notebook:&lt;/h2&gt;
 &lt;p&gt;List the team members contributing to this notebook, along with their responsabilities:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;team member 1 &lt;strong&gt;name&lt;/strong&gt;: team member 1 &lt;strong&gt;responsabilities&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;team member 2 &lt;strong&gt;name&lt;/strong&gt;: team member 2 &lt;strong&gt;responsabilities&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;etc.&lt;/li&gt;
+&lt;li&gt;team member 1 &lt;strong&gt;Shorhon&lt;/strong&gt;: team member 1 &lt;strong&gt;responsibilities&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;team member 2 &lt;strong&gt;Sarah&lt;/strong&gt;: team member 2 &lt;strong&gt;responsibilities&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;team member 3 &lt;strong&gt;Patrick&lt;/strong&gt;: team member 3 &lt;strong&gt;responsibilities&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;team member 4 &lt;strong&gt;Doh&lt;/strong&gt;: team member 4 &lt;strong&gt;responsibilities&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I advise you to work at least in pairs for each project notebook, as you did for the homework assignments. Of course, all team members may participate to each notebook.&lt;/p&gt;
 &lt;/div&gt;
@@ -319,7 +324,7 @@ In&amp;nbsp;[]:
 ./data/simulated  # to store simulated data
 ./visualizations  # to store your plots&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;display samples of your data files (e.g. for a csv files, use data frames and the &lt;code&gt;head&lt;/code&gt; method)&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Write &lt;strong&gt;scripts&lt;/strong&gt; into the &lt;code&gt;./script&lt;/code&gt; directory using the he &lt;strong&gt;magic command&lt;/strong&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Write &lt;strong&gt;scripts&lt;/strong&gt; into the &lt;code&gt;./script&lt;/code&gt; directory using the &lt;strong&gt;magic command&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;%%file ./script/file_name&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Your scripts should contain &lt;strong&gt;functions&lt;/strong&gt; and &lt;strong&gt;objects&lt;/strong&gt; allowing you to&lt;/p&gt;
@@ -363,14 +368,11 @@ In&amp;nbsp;[2]:
 &lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="box-flex1 output_subarea output_stream output_stdout"&gt;
 &lt;pre&gt;
-visualizations
-script
 README.md
 NB4_project_report.ipynb
 NB3_data_analysis.ipynb
 NB2_data_cleaning.ipynb
 NB1_data_gathering.ipynb
-data
 
 &lt;/pre&gt;
 &lt;/div&gt;
@@ -379,7 +381,12 @@ data
 &lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="box-flex1 output_subarea output_stream output_stderr"&gt;
 &lt;pre&gt;
+mkdir: cannot create directory ‘../script’: File exists
 mkdir: cannot create directory ‘../data’: File exists
+mkdir: cannot create directory ‘../data/raw’: File exists
+mkdir: cannot create directory ‘../data/cleaned’: File exists
+mkdir: cannot create directory ‘../data/simulated’: File exists
+mkdir: cannot create directory ‘../visualizations’: File exists
 
 &lt;/pre&gt;
 &lt;/div&gt;
@@ -399,7 +406,7 @@ mkdir: cannot create directory ‘../data’: File exists
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
 &lt;div class="prompt input_prompt"&gt;
-In&amp;nbsp;[4]:
+In&amp;nbsp;[3]:
 &lt;/div&gt;
 &lt;div class="input_area box-flex1"&gt;
 &lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;load_ext&lt;/span&gt; &lt;span class="n"&gt;rmagic&lt;/span&gt;
@@ -415,58 +422,21 @@ In&amp;nbsp;[4]:
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We now download an XML source containing plant data, and display an typical plant entry, represented as a XML node:&lt;/p&gt;
 &lt;/div&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;library(XML) plant_url = 'http://www.stat.berkeley.edu/classes/s133/data/plant_catalog.xml' plant_file = './data/raw/plant.xml'&lt;/p&gt;
+&lt;p&gt;download.file(plant_url, plant_file, method=&amp;quot;curl&amp;quot;)&lt;/p&gt;
+&lt;p&gt;xml_doc = xmlParse(plant_file) root_node = xmlRoot(xml_doc)&lt;/p&gt;
+&lt;p&gt;plant_nodes = xmlChildren(root_node) print(plant_nodes[[1]])&lt;/p&gt;
+&lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
 &lt;div class="prompt input_prompt"&gt;
-In&amp;nbsp;[6]:
+In&amp;nbsp;[]:
 &lt;/div&gt;
 &lt;div class="input_area box-flex1"&gt;
 &lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;R&lt;/span&gt;
 &lt;span class="n"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;XML&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;plant_url&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt;  &lt;span class="s"&gt;&amp;#39;http://www.stat.berkeley.edu/classes/s133/data/plant_catalog.xml&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;plant_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;./data/raw/plant.xml&amp;#39;&lt;/span&gt;
-
-&lt;span class="n"&gt;download&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;plant_url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;plant_file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;curl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;xml_doc&lt;/span&gt;   &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xmlParse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;plant_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;root_node&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xmlRoot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;xml_doc&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;plant_nodes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xmlChildren&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root_node&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;plant_nodes&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="vbox output_wrapper"&gt;
-&lt;div class="output vbox"&gt;
-
-
-&lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div class="box-flex1 output_subarea output_display_data"&gt;
-
-
-&lt;pre&gt;
-
-Attaching package: ‘XML’
-
-The following object(s) are masked from ‘package:tools’:
-
-    toHTML
-
-&amp;lt;PLANT&amp;gt;
-  &amp;lt;COMMON&amp;gt;Bloodroot&amp;lt;/COMMON&amp;gt;
-  &amp;lt;BOTANICAL&amp;gt;Sanguinaria canadensis&amp;lt;/BOTANICAL&amp;gt;
-  &amp;lt;ZONE&amp;gt;4&amp;lt;/ZONE&amp;gt;
-  &amp;lt;LIGHT&amp;gt;Mostly Shady&amp;lt;/LIGHT&amp;gt;
-  &amp;lt;PRICE&amp;gt;$2.44&amp;lt;/PRICE&amp;gt;
-  &amp;lt;AVAILABILITY&amp;gt;031599&amp;lt;/AVAILABILITY&amp;gt;
-&amp;lt;/PLANT&amp;gt; 
-
-&lt;/pre&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -507,6 +477,23 @@ COMMON BOTANICAL ZONE LIGHT PRICE AVAILABILITY
 
 &lt;/div&gt;
 &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell vbox"&gt;
+&lt;div class="input hbox"&gt;
+&lt;div class="prompt input_prompt"&gt;
+In&amp;nbsp;[]:
+&lt;/div&gt;
+&lt;div class="input_area box-flex1"&gt;
+&lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;R&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;frame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;raw_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;111&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;51&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;raw_data&lt;/span&gt;&lt;span class="p"&gt;[,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;51&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;colnames&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;unname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sappy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,],&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;character&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;column_names&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;

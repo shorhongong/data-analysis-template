@@ -1720,7 +1720,7 @@ init_mathjax();
             <meta property="og:type" content="article"/>
             <meta property="og:title" content="Data Gathering"/>
             <meta property="og:url" content="http://shorhongong.github.io/data-analysis-template/nb1.html"/>
-            <meta property="og:description" content="In this notebook, you'll create the directory structure for your project download the raw data for your project write functions and classes to transform raw data (e.g in XML, jason, etc.) into data frames explain what your are doing Team members responsible for this notebook: List the team ..."/>
+            <meta property="og:description" content="Just a test¶ In this notebook, you'll create the directory structure for your project download the raw data for your project write functions and classes to transform raw data (e.g in XML, jason, etc.) into data frames explain what your are doing Team members responsible for this notebook ..."/>
 
     <!-- Bootstrap -->
         <link rel="stylesheet" href="http://shorhongong.github.io/data-analysis-template/theme/css/bootstrap.min.css" type="text/css"/>
@@ -1815,6 +1815,10 @@ Data Analysis Project            </a>
                 </div>
                 <p>
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Just-a-test">Just a test<a class="anchor-link" href="#Just-a-test">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>In this notebook, you'll</p>
 <ul>
 <li>create the directory structure for your project</li>
@@ -1827,9 +1831,10 @@ Data Analysis Project            </a>
 <h2 id="team-members-responsible-for-this-notebook">Team members responsible for this notebook:</h2>
 <p>List the team members contributing to this notebook, along with their responsabilities:</p>
 <ul>
-<li>team member 1 <strong>name</strong>: team member 1 <strong>responsabilities</strong></li>
-<li>team member 2 <strong>name</strong>: team member 2 <strong>responsabilities</strong></li>
-<li>etc.</li>
+<li>team member 1 <strong>Shorhon</strong>: team member 1 <strong>responsibilities</strong></li>
+<li>team member 2 <strong>Sarah</strong>: team member 2 <strong>responsibilities</strong></li>
+<li>team member 3 <strong>Patrick</strong>: team member 3 <strong>responsibilities</strong></li>
+<li>team member 4 <strong>Doh</strong>: team member 4 <strong>responsibilities</strong></li>
 </ul>
 <p>I advise you to work at least in pairs for each project notebook, as you did for the homework assignments. Of course, all team members may participate to each notebook.</p>
 </div>
@@ -1854,7 +1859,7 @@ Data Analysis Project            </a>
 ./data/simulated  # to store simulated data
 ./visualizations  # to store your plots</code></pre></li>
 <li><p>display samples of your data files (e.g. for a csv files, use data frames and the <code>head</code> method)</p></li>
-<li><p>Write <strong>scripts</strong> into the <code>./script</code> directory using the he <strong>magic command</strong></p>
+<li><p>Write <strong>scripts</strong> into the <code>./script</code> directory using the <strong>magic command</strong></p>
 <p>%%file ./script/file_name</p></li>
 </ul>
 <p>Your scripts should contain <strong>functions</strong> and <strong>objects</strong> allowing you to</p>
@@ -1898,14 +1903,11 @@ In&nbsp;[2]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-visualizations
-script
 README.md
 NB4_project_report.ipynb
 NB3_data_analysis.ipynb
 NB2_data_cleaning.ipynb
 NB1_data_gathering.ipynb
-data
 
 </pre>
 </div>
@@ -1914,7 +1916,12 @@ data
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stderr">
 <pre>
+mkdir: cannot create directory ‘../script’: File exists
 mkdir: cannot create directory ‘../data’: File exists
+mkdir: cannot create directory ‘../data/raw’: File exists
+mkdir: cannot create directory ‘../data/cleaned’: File exists
+mkdir: cannot create directory ‘../data/simulated’: File exists
+mkdir: cannot create directory ‘../visualizations’: File exists
 
 </pre>
 </div>
@@ -1934,7 +1941,7 @@ mkdir: cannot create directory ‘../data’: File exists
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[4]:
+In&nbsp;[3]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%</span><span class="k">load_ext</span> <span class="n">rmagic</span>
@@ -1950,58 +1957,21 @@ In&nbsp;[4]:
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We now download an XML source containing plant data, and display an typical plant entry, represented as a XML node:</p>
 </div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>library(XML) plant_url = 'http://www.stat.berkeley.edu/classes/s133/data/plant_catalog.xml' plant_file = './data/raw/plant.xml'</p>
+<p>download.file(plant_url, plant_file, method=&quot;curl&quot;)</p>
+<p>xml_doc = xmlParse(plant_file) root_node = xmlRoot(xml_doc)</p>
+<p>plant_nodes = xmlChildren(root_node) print(plant_nodes[[1]])</p>
+</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[6]:
+In&nbsp;[]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
 <span class="n">library</span><span class="p">(</span><span class="n">XML</span><span class="p">)</span>
-<span class="n">plant_url</span>  <span class="o">=</span>  <span class="s">&#39;http://www.stat.berkeley.edu/classes/s133/data/plant_catalog.xml&#39;</span>
-<span class="n">plant_file</span> <span class="o">=</span> <span class="s">&#39;./data/raw/plant.xml&#39;</span>
-
-<span class="n">download</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="n">plant_url</span><span class="p">,</span> <span class="n">plant_file</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;curl&quot;</span><span class="p">)</span>
-
-<span class="n">xml_doc</span>   <span class="o">=</span> <span class="n">xmlParse</span><span class="p">(</span><span class="n">plant_file</span><span class="p">)</span>
-<span class="n">root_node</span> <span class="o">=</span> <span class="n">xmlRoot</span><span class="p">(</span><span class="n">xml_doc</span><span class="p">)</span>
-
-<span class="n">plant_nodes</span> <span class="o">=</span> <span class="n">xmlChildren</span><span class="p">(</span><span class="n">root_node</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">plant_nodes</span><span class="p">[[</span><span class="mi">1</span><span class="p">]])</span>
 </pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
-
-
-<pre>
-
-Attaching package: ‘XML’
-
-The following object(s) are masked from ‘package:tools’:
-
-    toHTML
-
-&lt;PLANT&gt;
-  &lt;COMMON&gt;Bloodroot&lt;/COMMON&gt;
-  &lt;BOTANICAL&gt;Sanguinaria canadensis&lt;/BOTANICAL&gt;
-  &lt;ZONE&gt;4&lt;/ZONE&gt;
-  &lt;LIGHT&gt;Mostly Shady&lt;/LIGHT&gt;
-  &lt;PRICE&gt;$2.44&lt;/PRICE&gt;
-  &lt;AVAILABILITY&gt;031599&lt;/AVAILABILITY&gt;
-&lt;/PLANT&gt; 
-
-</pre>
-
-</div>
-</div>
 
 </div>
 </div>
@@ -2042,6 +2012,23 @@ COMMON BOTANICAL ZONE LIGHT PRICE AVAILABILITY
 
 </div>
 </div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">raw_data</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">111</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">51</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">[,</span><span class="mi">2</span><span class="p">:</span><span class="mi">51</span><span class="p">]</span>
+<span class="n">colnames</span> <span class="o">=</span> <span class="n">unname</span><span class="p">(</span><span class="n">sappy</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,],</span> <span class="k">as</span><span class="o">.</span><span class="n">character</span><span class="p">))</span>
+<span class="n">cat</span><span class="p">(</span><span class="n">column_names</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
